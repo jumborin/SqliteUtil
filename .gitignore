@@ -1,0 +1,7 @@
+#Sqliteの実行ファイル
+sqlite3.exe
+sqldiff.exe
+sqlite3_analyzer.exe
+data/*
+*.db
+*.sqlite3
