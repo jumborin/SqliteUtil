@@ -10,7 +10,7 @@ REM DBファイル名
 SET DB_FILE=test.db
 
 REM ダンプファイルインポート用SQLファイル
-SET IMPORT_DUMP_SQL_FILE=import_dump_file.sql
+SET IMPORT_DUMP_SQL_FILE=sql/import_dump_file.sql
 
 REM 実行処理
 

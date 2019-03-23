@@ -10,7 +10,7 @@ REM DBファイル名
 SET DB_FILE=test.db
 
 REM DBファイルのダンプファイルを作成するSQLファイル
-SET DUMP_SQL_FILE=dump_sqlite_data.sql
+SET DUMP_SQL_FILE=sql/dump_sqlite_data.sql
 
 REM DBファイルのダンプファイルを作成する。
 sqlite3.exe %DB_FILE% < %DUMP_SQL_FILE%

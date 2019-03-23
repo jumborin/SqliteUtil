@@ -11,19 +11,16 @@ REM DBファイル名
 SET DB_FILE=test.db
 
 REM テーブル作成用SQLファイル
-SET CREATE_TABLE_SQL_FILE=create_table.sql
+SET CREATE_TABLE_SQL_FILE=sql/create_table.sql
 
 REM テーブルデータ作成用SQLファイル
-SET INSERT_DATA_SQL_FILE=insert_data.sql
+SET INSERT_DATA_SQL_FILE=sql/insert_data.sql
 
 REM テーブル一覧を出力するSQLファイル
-SET SELECT_TABLE_SQL_FILE=select_sqlite_master_table.sql
+SET SELECT_TABLE_SQL_FILE=sql/select_sqlite_master_table.sql
 
 REM テーブル内のデータを出力するSQLファイル
-SET SELECT_DATA_SQL_FILE=select_sqlite_data.sql
-
-REM DBファイルのダンプファイルを作成するSQLファイル
-SET DUMP_SQL_FILE=dump_sqlite_data.sql
+SET SELECT_DATA_SQL_FILE=sql/select_sqlite_data.sql
 
 
 REM 実行処理
@@ -41,7 +38,4 @@ sqlite3.exe %DB_FILE% < %SELECT_TABLE_SQL_FILE%
 
 REM 結果を出力する。
 sqlite3.exe %DB_FILE% < %SELECT_DATA_SQL_FILE%
-
-REM DBファイルのダンプファイルを作成する。
-sqlite3.exe %DB_FILE% < %DUMP_SQL_FILE%
 
