@@ -2,6 +2,13 @@
 sqlite3.exe
 sqldiff.exe
 sqlite3_analyzer.exe
+
+#データフォルダ内の全てのファイル
 data/*
+
+#DBファイル
 *.db
 *.sqlite3
+
+#バックアップファイル
+*.bak
