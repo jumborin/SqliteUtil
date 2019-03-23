@@ -33,7 +33,7 @@ IF EXIST %DB_FILE% move %DB_FILE% %DB_FILE%_%DATE:/=%_%TIME::=%.bak
 REM CreateTable用のSQLファイルを実行する。
 sqlite3.exe %DB_FILE% < %CREATE_TABLE_SQL_FILE%
 
-REM CreateTable用のSQLファイルを実行する。
+REM テーブルデータ作成用のSQLファイルを実行する。
 sqlite3.exe %DB_FILE% < %INSERT_DATA_SQL_FILE%
 
 REM テーブル一覧を出力する。
