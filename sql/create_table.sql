@@ -1,5 +1,8 @@
 
 /* テーブルを作成する。 */
+create table test(id text,message text);
+
+/* テーブルを作成する。 */
 create table user(id text,name text,age integer,type text);
 create index user_idx on test(id);
 
