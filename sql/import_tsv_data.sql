@@ -3,3 +3,6 @@
 
 /* import.tsvをテーブルにinsertする。 */
 .import import/import.tsv test
+
+/* コネクションを切断する。*/
+.quit

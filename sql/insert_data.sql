@@ -10,3 +10,6 @@ insert into test values('3', 'TEST3');
 
 /*コミット処理*/
 COMMIT;
+
+/* コネクションを切断する。*/
+.quit

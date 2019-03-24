@@ -1,6 +1,6 @@
 /* CREATE文の一覧を作成する。 */
-.output data/sqlite_master_table.txt
-select * from sqlite_master;
+.output data/table_list.txt
+.table
 
 /* コネクションを切断する。*/
 .quit

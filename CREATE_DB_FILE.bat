@@ -19,7 +19,10 @@ REM テーブルデータ作成用SQLファイル
 SET INSERT_DATA_SQL_FILE=sql/insert_data.sql
 
 REM テーブル一覧を出力するSQLファイル
-SET SELECT_TABLE_SQL_FILE=sql/select_sqlite_master_table.sql
+SET SELECT_TABLE_SQL_FILE=sql/select_table_list.sql
+
+REM Sqliteマスタテーブルを出力するSQLファイル
+SET SELECT_SQLITE_MASTER_TABLE_SQL_FILE=sql/select_sqlite_master_table.sql
 
 REM テーブル内のデータを出力するSQLファイル
 SET SELECT_DATA_SQL_FILE=sql/select_sqlite_data.sql
@@ -37,6 +40,9 @@ sqlite3.exe %DB_FILE% < %INSERT_DATA_SQL_FILE%
 
 REM テーブル一覧を出力する。
 sqlite3.exe %DB_FILE% < %SELECT_TABLE_SQL_FILE%
+
+REM Sqliteマスタテーブルを出力する。
+sqlite3.exe %DB_FILE% < %SELECT_SQLITE_MASTER_TABLE_SQL_FILE%
 
 REM 結果を出力する。
 sqlite3.exe %DB_FILE% < %SELECT_DATA_SQL_FILE%

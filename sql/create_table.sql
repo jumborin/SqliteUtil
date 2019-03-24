@@ -1,4 +1,3 @@
-
 /* テーブルを作成する。 */
 create table test(id text,message text);
 
@@ -9,3 +8,6 @@ create index user_idx on test(id);
 /* テーブルを作成する。 */
 create table history(exec_time text,userid text,action text,message text);
 create index history_idx on test(userid,action);
+
+/* コネクションを切断する。*/
+.quit
