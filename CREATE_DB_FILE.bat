@@ -30,6 +30,8 @@ SET SELECT_DATA_SQL_FILE=sql/select_sqlite_data.sql
 
 REM 実行処理
 
+
+REM 既に同名のDBファイルが存在する場合はバックアップする。
 IF EXIST %DB_FILE% move %DB_FILE% %DB_FILE%_%DATE:/=%_%TIME::=%.bak
 
 REM CreateTable用のSQLファイルを実行する。
