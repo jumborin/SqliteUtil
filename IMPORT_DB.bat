@@ -6,8 +6,10 @@ REM ==============================================================
 
 REM 変数設定
 
-REM DBファイル名
-SET DB_FILE=test.db
+REM 設定ファイルを読み込んで変数に設定
+for /f "tokens=1,* delims==" %%a in (db_setting.ini) do (
+    set %%a=%%b
+)
 
 REM ダンプファイルインポート用SQLファイル
 SET IMPORT_DUMP_SQL_FILE=sql/import_dump_file.sql

@@ -7,8 +7,10 @@ REM ==============================================================
 
 REM 変数設定
 
-REM DBファイル名
-SET DB_FILE=test.db
+REM 設定ファイルを読み込んで変数に設定
+for /f "tokens=1,* delims==" %%a in (db_setting.ini) do (
+    set %%a=%%b
+)
 
 REM テーブル作成用SQLファイル
 SET CREATE_TABLE_SQL_FILE=sql/create_table.sql
