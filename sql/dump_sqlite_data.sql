@@ -1,3 +1,3 @@
 /* ダンプファイルとして出力する。 */
-.output data/dump.txt
+.output dump/dump.txt
 .dump

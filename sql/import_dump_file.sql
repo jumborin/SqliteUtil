@@ -1,2 +1,2 @@
 /* ダンプファイルをインポートする */
-.read data/dump.txt
+.read dump/dump.txt
