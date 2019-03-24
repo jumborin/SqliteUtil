@@ -1,8 +1,9 @@
 PRAGMA foreign_keys=OFF;
 BEGIN TRANSACTION;
 CREATE TABLE test(id text,message text);
-INSERT INTO "test" VALUES('1','TEST');
+INSERT INTO "test" VALUES('1','TEST1');
 INSERT INTO "test" VALUES('2','TEST2');
+INSERT INTO "test" VALUES('3','TEST3');
 CREATE TABLE user(id text,name text,age integer,type text);
 CREATE TABLE history(exec_time text,userid text,action text,message text);
 CREATE INDEX user_idx on test(id);
