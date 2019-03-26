@@ -1,11 +1,14 @@
 # Sqlite_Util
 
-Sqliteã‚’åˆ©ç”¨ã™ã‚‹éš›ã®ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ„ãƒ¼ãƒ«
+Sqlite‚ð—˜—p‚·‚éÛ‚Ìƒ†[ƒeƒBƒŠƒeƒBƒc[ƒ‹
 
-#ä½¿ã„æ–¹
+# Žg‚¢•û
 
-ä¸‹è¨˜ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã‚µã‚¤ãƒˆã‹ã‚‰ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã€sqlite3.exeã‚’åŒã˜éšŽå±¤ã«æ ¼ç´ã—ã€batãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã€‚
+‰º‹Lƒ_ƒEƒ“ƒ[ƒhƒTƒCƒg‚©‚çƒ_ƒEƒ“ƒ[ƒh‚µAsqlite3.exe‚ð“¯‚¶ŠK‘w‚ÉŠi”[‚µAbatƒtƒ@ƒCƒ‹‚ðƒ_ƒuƒ‹ƒNƒŠƒbƒN‚·‚éB
 
-#sqlite3ã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã‚µã‚¤ãƒˆ
+# sqlite3‚Ìƒ_ƒEƒ“ƒ[ƒhƒTƒCƒg
 
 https://www.sqlite.org/download.html
+
+# ƒTƒ|[ƒgƒo[ƒWƒ‡ƒ“
+SQLite version 3.27.2
