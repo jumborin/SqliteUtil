@@ -1,14 +1,17 @@
-#Sqliteの実行ファイル
+# Sqliteの実行ファイル
 sqlite3.exe
 sqldiff.exe
 sqlite3_analyzer.exe
 
-#データフォルダ内の全てのファイル
+# データフォルダ内の全てのファイル
 data/*
 
-#DBファイル
+# DBファイル
 *.db
 *.sqlite3
 
 #バックアップファイル
 *.bak
+
+# Visual Studio Codeのファイル
+.vscode
