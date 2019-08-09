@@ -1,11 +1,14 @@
 @echo off
 
-REM ==============================================================
+REM ===============================================================================
 REM sqliteでのテーブル作成用バッチファイル
 REM 注意事項：データが入っている場合は削除されるため、注意すること
-REM ==============================================================
+REM ===============================================================================
 
+
+REM ===============================================================================
 REM 変数設定
+REM ===============================================================================
 
 REM 設定ファイルを読み込んで変数に設定
 for /f "tokens=1,* delims==" %%a in (db_setting.ini) do (
@@ -13,22 +16,23 @@ for /f "tokens=1,* delims==" %%a in (db_setting.ini) do (
 )
 
 REM テーブル作成用SQLファイル
-SET CREATE_TABLE_SQL_FILE=sql/create_table.sql
+SET CREATE_TABLE_SQL_FILE=%SQL_DIR%/create_table.sql
 
 REM テーブルデータ作成用SQLファイル
-SET INSERT_DATA_SQL_FILE=sql/insert_data.sql
+SET INSERT_DATA_SQL_FILE=%SQL_DIR%/insert_data.sql
 
 REM テーブル一覧を出力するSQLファイル
-SET SELECT_TABLE_SQL_FILE=sql/select_table_list.sql
+SET SELECT_TABLE_SQL_FILE=%SQL_DIR%/select_table_list.sql
 
 REM Sqliteマスタテーブルを出力するSQLファイル
-SET SELECT_SQLITE_MASTER_TABLE_SQL_FILE=sql/select_sqlite_master_table.sql
+SET SELECT_SQLITE_MASTER_TABLE_SQL_FILE=%SQL_DIR%/select_sqlite_master_table.sql
 
 REM テーブル内のデータを出力するSQLファイル
-SET SELECT_DATA_SQL_FILE=sql/select_sqlite_data.sql
+SET SELECT_DATA_SQL_FILE=%SQL_DIR%/select_sqlite_data.sql
 
-
+REM ===============================================================================
 REM 実行処理
+REM ===============================================================================
 
 
 REM 既に同名のDBファイルが存在する場合はバックアップする。
