@@ -3,7 +3,6 @@ name: CI
 # プッシュとプルリクエスト時にテスト実行
 on:
   push:
-    branches: [main, master]
   pull_request:
     branches: [main, master]
 
@@ -15,16 +14,14 @@ jobs:
     # リポジトリのコードをチェックアウト
     - uses: actions/checkout@v4
     
-    # SQLite3実行ファイルのダウンロードとセットアップ
+    # SQLite3のインストールとセットアップ
     - name: Setup SQLite
       run: |
-        # SQLiteツールをダウンロード
-        curl -L https://www.sqlite.org/2023/sqlite-tools-win32-x86-3420000.zip -o sqlite.zip
-        # sqlite3.exeを展開
-        tar -xf sqlite.zip --strip-components=1 sqlite-tools-win32-x86-3420000/sqlite3.exe
+        # wingetでSQLiteをインストール
+        winget install SQLite.SQLite
         # 出力用ディレクトリ作成
         mkdir data
-      shell: bash
+      shell: powershell
     
     # 全バッチファイルのテスト実行
     - name: Run tests
