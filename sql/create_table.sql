@@ -1,13 +1,13 @@
-/* ƒe[ƒuƒ‹‚ğì¬‚·‚éB */
+/* ï¿½eï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ì¬ï¿½ï¿½ï¿½ï¿½B */
 create table test(id text,message text);
 
-/* ƒe[ƒuƒ‹‚ğì¬‚·‚éB */
+/* ï¿½eï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ì¬ï¿½ï¿½ï¿½ï¿½B */
 create table user(id text,name text,age integer,type text);
 create index user_idx on test(id);
 
-/* ƒe[ƒuƒ‹‚ğì¬‚·‚éB */
+/* ï¿½eï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ì¬ï¿½ï¿½ï¿½ï¿½B */
 create table history(exec_time text,userid text,action text,message text);
-create index history_idx on test(userid,action);
+create index history_idx on history(userid,action);
 
-/* ƒRƒlƒNƒVƒ‡ƒ“‚ğØ’f‚·‚éB*/
+/* ï¿½Rï¿½lï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø’fï¿½ï¿½ï¿½ï¿½B*/
 .quit
