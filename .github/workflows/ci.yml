@@ -14,14 +14,16 @@ jobs:
     # リポジトリのコードをチェックアウト
     - uses: actions/checkout@v4
     
-    # SQLite3のインストールとセットアップ
+    # SQLite3実行ファイルのダウンロードとセットアップ
     - name: Setup SQLite
       run: |
-        # wingetでSQLiteをインストール
-        winget install SQLite.SQLite
+        # SQLiteツールをダウンロード
+        curl -L https://www.sqlite.org/2023/sqlite-tools-win32-x86-3420000.zip -o sqlite.zip
+        # sqlite3.exeを展開
+        tar -xf sqlite.zip --strip-components=1 sqlite-tools-win32-x86-3420000/sqlite3.exe
         # 出力用ディレクトリ作成
         mkdir data
-      shell: powershell
+      shell: bash
     
     # 全バッチファイルのテスト実行
     - name: Run tests
