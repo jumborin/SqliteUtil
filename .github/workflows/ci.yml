@@ -25,23 +25,31 @@ jobs:
       shell: cmd
       continue-on-error: true
     
-    - name: Test IMPORT_CSV_DATA
-      run: .\IMPORT_CSV_DATA.bat
+    - name: Clean and Test IMPORT_CSV_DATA
+      run: |
+        del /f /q *.db 2>nul
+        .\IMPORT_CSV_DATA.bat
       shell: cmd
       continue-on-error: true
     
-    - name: Test IMPORT_TSV_DATA
-      run: .\IMPORT_TSV_DATA.bat
+    - name: Clean and Test IMPORT_TSV_DATA
+      run: |
+        del /f /q *.db 2>nul
+        .\IMPORT_TSV_DATA.bat
       shell: cmd
       continue-on-error: true
     
     - name: Test DUMP_DB
-      run: .\DUMP_DB.bat
+      run: |
+        .\CREATE_DB_FILE.bat
+        .\DUMP_DB.bat
       shell: cmd
       continue-on-error: true
     
     - name: Test IMPORT_DB
-      run: .\IMPORT_DB.bat
+      run: |
+        del /f /q *.db 2>nul
+        .\IMPORT_DB.bat
       shell: cmd
       continue-on-error: true
     
