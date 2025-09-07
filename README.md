@@ -1,14 +1,15 @@
+[![CI](https://github.com/jumborin/SqliteUtil/workflows/CI/badge.svg)](https://github.com/jumborin/SqliteUtil/actions)
+
 # Sqlite_Util
+Sqliteã‚’åˆ©ç”¨ã™ã‚‹éš›ã®ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ„ãƒ¼ãƒ«
 
-Sqlite‚ğ—˜—p‚·‚éÛ‚Ìƒ†[ƒeƒBƒŠƒeƒBƒc[ƒ‹
+# ä½¿ã„æ–¹
 
-# g‚¢•û
+ä¸‹è¨˜ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã‚µã‚¤ãƒˆã‹ã‚‰command-line toolsã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã€sqlite3.exeã‚’åŒã˜éšå±¤ã«æ ¼ç´ã—ã€batãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã€‚
 
-‰º‹Lƒ_ƒEƒ“ƒ[ƒhƒTƒCƒg‚©‚çcommand-line tools‚ğƒ_ƒEƒ“ƒ[ƒh‚µAsqlite3.exe‚ğ“¯‚¶ŠK‘w‚ÉŠi”[‚µAbatƒtƒ@ƒCƒ‹‚ğƒ_ƒuƒ‹ƒNƒŠƒbƒN‚·‚éB
-
-# sqlite3‚Ìƒ_ƒEƒ“ƒ[ƒhƒTƒCƒg
+# sqlite3ã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã‚µã‚¤ãƒˆ
 
 https://www.sqlite.org/download.html
 
-# ƒTƒ|[ƒgƒo[ƒWƒ‡ƒ“
+# ã‚µãƒãƒ¼ãƒˆãƒãƒ¼ã‚¸ãƒ§ãƒ³
 SQLite version 3.27.2
