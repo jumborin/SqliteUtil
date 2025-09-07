@@ -1,55 +1,54 @@
 @echo off
 
 REM ===============================================================================
-REM sqlite�ł̃e�[�u���쐬�p�o�b�`�t�@�C��
-REM ���ӎ����F�f�[�^�������Ă���ꍇ�͍폜����邽�߁A���ӂ��邱��
+REM sqliteでのテーブル作成用バッチファイル
+REM 注意事項：データが入っている場合は削除されるため、注意すること
 REM ===============================================================================
 
 
 REM ===============================================================================
-REM �ϐ��ݒ�
+REM 変数設定
 REM ===============================================================================
 
-REM �ݒ�t�@�C����ǂݍ���ŕϐ��ɐݒ�
+REM 設定ファイルを読み込んで変数に設定
 for /f "tokens=1,* delims==" %%a in (db_setting.ini) do (
     set %%a=%%b
 )
 
-REM �e�[�u���쐬�pSQL�t�@�C��
+REM テーブル作成用SQLファイル
 SET CREATE_TABLE_SQL_FILE=%SQL_DIR%/create_table.sql
 
-REM �e�[�u���f�[�^�쐬�pSQL�t�@�C��
+REM テーブルデータ作成用SQLファイル
 SET INSERT_DATA_SQL_FILE=%SQL_DIR%/insert_data.sql
 
-REM �e�[�u���ꗗ���o�͂���SQL�t�@�C��
+REM テーブル一覧を出力するSQLファイル
 SET SELECT_TABLE_SQL_FILE=%SQL_DIR%/select_table_list.sql
 
-REM Sqlite�}�X�^�e�[�u�����o�͂���SQL�t�@�C��
+REM Sqliteマスタテーブルを出力するSQLファイル
 SET SELECT_SQLITE_MASTER_TABLE_SQL_FILE=%SQL_DIR%/select_sqlite_master_table.sql
 
-REM �e�[�u�����̃f�[�^���o�͂���SQL�t�@�C��
+REM テーブル内のデータを出力するSQLファイル
 SET SELECT_DATA_SQL_FILE=%SQL_DIR%/select_sqlite_data.sql
 
 REM ===============================================================================
-REM ���s����
+REM 実行処理
 REM ===============================================================================
 
 
-REM ���ɓ�����DB�t�@�C�������݂���ꍇ�̓o�b�N�A�b�v����B
+REM 既に同名のDBファイルが存在する場合はバックアップする。
 IF EXIST %DB_FILE% move %DB_FILE% %DB_FILE%_%DATE:/=%_%TIME::=%.bak
 
-REM CreateTable�p��SQL�t�@�C�������s����B
+REM CreateTable用のSQLファイルを実行する。
 sqlite3.exe %DB_FILE% < %CREATE_TABLE_SQL_FILE%
 
-REM �e�[�u���f�[�^�쐬�p��SQL�t�@�C�������s����B
+REM テーブルデータ作成用のSQLファイルを実行する。
 sqlite3.exe %DB_FILE% < %INSERT_DATA_SQL_FILE%
 
-REM �e�[�u���ꗗ���o�͂���B
+REM テーブル一覧を出力する。
 sqlite3.exe %DB_FILE% < %SELECT_TABLE_SQL_FILE%
 
-REM Sqlite�}�X�^�e�[�u�����o�͂���B
+REM Sqliteマスタテーブルを出力する。
 sqlite3.exe %DB_FILE% < %SELECT_SQLITE_MASTER_TABLE_SQL_FILE%
 
-REM ���ʂ��o�͂���B
+REM 結果を出力する。
 sqlite3.exe %DB_FILE% < %SELECT_DATA_SQL_FILE%
-

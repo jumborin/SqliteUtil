@@ -1,6 +1,6 @@
-/* CREATE•¶‚Ìˆê——‚ğì¬‚·‚éB */
+/* CREATEæ–‡ã®ä¸€è¦§ã‚’ä½œæˆã™ã‚‹ã€‚ */
 .output data/sqlite_master_table.txt
 select * from sqlite_master;
 
-/* ƒRƒlƒNƒVƒ‡ƒ“‚ğØ’f‚·‚éB*/
+/* ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’åˆ‡æ–­ã™ã‚‹ã€‚*/
 .quit
