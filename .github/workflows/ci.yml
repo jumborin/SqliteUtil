@@ -25,6 +25,8 @@ jobs:
         Copy-Item "sqlite-tools\sqlite-tools-win32-x86-3420000\sqlite3.exe" -Destination "."
         # 出力用ディレクトリ作成
         New-Item -ItemType Directory -Force -Path "data"
+        # SQLiteバージョン確認
+        .\sqlite3.exe -version
       shell: powershell
     
     # 全バッチファイルのテスト実行
