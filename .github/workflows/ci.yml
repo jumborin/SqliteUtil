@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup SQLite
+      run: |
+        Invoke-WebRequest -Uri "https://www.sqlite.org/2023/sqlite-tools-win32-x86-3420000.zip" -OutFile "sqlite-tools.zip"
+        Expand-Archive -Path "sqlite-tools.zip" -DestinationPath "sqlite-tools"
+        Copy-Item "sqlite-tools\sqlite-tools-win32-x86-3420000\sqlite3.exe" -Destination "."
+      shell: powershell
+    
+    - name: Test CREATE_DB_FILE
+      run: .\CREATE_DB_FILE.bat
+      shell: cmd
+    
+    - name: Test IMPORT_CSV_DATA
+      run: .\IMPORT_CSV_DATA.bat
+      shell: cmd
+    
+    - name: Test IMPORT_TSV_DATA
+      run: .\IMPORT_TSV_DATA.bat
+      shell: cmd
+    
+    - name: Test DUMP_DB
+      run: .\DUMP_DB.bat
+      shell: cmd
+    
+    - name: Test IMPORT_DB
+      run: .\IMPORT_DB.bat
+      shell: cmd
+    
+    - name: Verify database exists
+      run: |
+        if (Test-Path "*.db") {
+          Write-Host "Database files created successfully"
+          Get-ChildItem *.db
+        } else {
+          Write-Error "No database files found"
+          exit 1
+        }
+      shell: powershell
