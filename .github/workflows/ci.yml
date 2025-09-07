@@ -36,12 +36,12 @@ jobs:
         tests=("CREATE_DB_FILE" "IMPORT_CSV_DATA" "IMPORT_TSV_DATA" "DUMP_DB" "IMPORT_DB")
         for test in "${tests[@]}"; do
           echo "Testing $test..."
-          # DUMP_DB以外は既存DBファイルを削除
-          [[ "$test" != "DUMP_DB" ]] && rm -f *.db
+          # 既存DBファイルを削除
+          rm -f *.db
           # DUMP_DBテスト前にDBファイル作成
           [[ "$test" == "DUMP_DB" ]] && ./CREATE_DB_FILE.bat
-          # バッチファイル実行（失敗しても継続）
-          ./$test.bat || echo "$test failed"
+          # バッチファイル実行（失敗時はエラー終了）
+          ./$test.bat
         done
       shell: bash
     
