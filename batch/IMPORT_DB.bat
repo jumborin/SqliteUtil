@@ -1,31 +1,27 @@
 @echo off
 
 REM ==============================================================
-REM sqlite‚Å‚Ìƒe[ƒuƒ‹ƒCƒ“ƒ|[ƒg—pƒoƒbƒ`ƒtƒ@ƒCƒ‹
+REM sqliteã§ã®ãƒ†ãƒ¼ãƒ–ãƒ«ã‚¤ãƒ³ãƒãƒ¼ãƒˆç”¨ãƒãƒƒãƒãƒ•ã‚¡ã‚¤ãƒ«
 REM ==============================================================
 
 REM ===============================================================================
-REM •Ï”Ý’è
+REM å¤‰æ•°è¨­å®š
 REM ===============================================================================
 
-REM Ý’èƒtƒ@ƒCƒ‹‚ð“Ç‚Ýž‚ñ‚Å•Ï”‚ÉÝ’è
+REM è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚“ã§å¤‰æ•°ã«è¨­å®š
 for /f "tokens=1,* delims==" %%a in (db_setting.ini) do (
     set %%a=%%b
 )
 
-REM ƒ_ƒ“ƒvƒtƒ@ƒCƒ‹ƒCƒ“ƒ|[ƒg—pSQLƒtƒ@ƒCƒ‹
+REM ãƒ€ãƒ³ãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã‚¤ãƒ³ãƒãƒ¼ãƒˆç”¨SQLãƒ•ã‚¡ã‚¤ãƒ«
 SET IMPORT_DUMP_SQL_FILE=%SQL_DIR%/import_dump_file.sql
 
-
 REM ===============================================================================
-REM ŽÀsˆ—
+REM å®Ÿè¡Œå‡¦ç†
 REM ===============================================================================
 
-
-REM Šù‚É“¯–¼‚ÌDBƒtƒ@ƒCƒ‹‚ª‘¶Ý‚µ‚Ä‚¢‚½ê‡‚ÍƒoƒbƒNƒAƒbƒv‚·‚éB
+REM æ—¢ã«åŒåã®DBãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ã¦ã„ãŸå ´åˆã¯ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã™ã‚‹ã€‚
 IF EXIST %DB_FILE% move %DB_FILE% %DB_FILE%_%DATE:/=%_%TIME::=%.bak
 
-REM CreateTable—p‚ÌSQLƒtƒ@ƒCƒ‹‚ðŽÀs‚·‚éB
+REM CreateTableç”¨ã®SQLãƒ•ã‚¡ã‚¤ãƒ«ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
 sqlite3.exe %DB_FILE% < %IMPORT_DUMP_SQL_FILE%
-
-

@@ -1,8 +1,8 @@
-/*ƒ^ƒu‹æØ‚è‚Å“Ç‚İ‚Ş*/
+/*ã‚¿ãƒ–åŒºåˆ‡ã‚Šã§èª­ã¿è¾¼ã‚€*/
 .separator \t
 
-/* import.tsv‚ğƒe[ƒuƒ‹‚Éinsert‚·‚éB */
+/* import.tsvã‚’ãƒ†ãƒ¼ãƒ–ãƒ«ã«insertã™ã‚‹ã€‚ */
 .import import/import.tsv test
 
-/* ƒRƒlƒNƒVƒ‡ƒ“‚ğØ’f‚·‚éB*/
+/* ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’åˆ‡æ–­ã™ã‚‹ã€‚*/
 .quit

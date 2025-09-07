@@ -1,5 +1,5 @@
-/* ƒ_ƒ“ƒvƒtƒ@ƒCƒ‹‚ðƒCƒ“ƒ|[ƒg‚·‚é */
+/* ãƒ€ãƒ³ãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹ */
 .read dump/dump.txt
 
-/* ƒRƒlƒNƒVƒ‡ƒ“‚ðØ’f‚·‚éB*/
+/* ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’åˆ‡æ–­ã™ã‚‹ã€‚*/
 .quit

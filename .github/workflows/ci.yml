@@ -1,0 +1,51 @@
+name: CI
+
+# プッシュとプルリクエスト時にテスト実行
+on:
+  push:
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: windows-latest
+    
+    steps:
+    # リポジトリのコードをチェックアウト
+    - uses: actions/checkout@v4
+    
+    # SQLite3実行ファイルのダウンロードとセットアップ
+    - name: Setup SQLite
+      run: |
+        # SQLiteツールをダウンロード
+        Invoke-WebRequest -Uri "https://www.sqlite.org/2023/sqlite-tools-win32-x86-3420000.zip" -OutFile "sqlite.zip"
+        # ZIPファイルを展開
+        Expand-Archive -Path "sqlite.zip" -DestinationPath "sqlite-tools"
+        # sqlite3.exeをコピー
+        Copy-Item "sqlite-tools\sqlite-tools-win32-x86-3420000\sqlite3.exe" -Destination "."
+        # 出力用ディレクトリ作成
+        New-Item -ItemType Directory -Force -Path "data"
+        # SQLiteバージョン確認
+        .\sqlite3.exe -version
+      shell: powershell
+    
+    # 全バッチファイルのテスト実行
+    - name: Run tests
+      run: |
+        # テスト対象のバッチファイル一覧
+        tests=("CREATE_DB_FILE" "IMPORT_CSV_DATA" "IMPORT_TSV_DATA" "DUMP_DB" "IMPORT_DB")
+        for test in "${tests[@]}"; do
+          echo "Testing $test..."
+          # 既存DBファイルを削除
+          rm -f *.db
+          # DUMP_DBテスト前にDBファイル作成
+          [[ "$test" == "DUMP_DB" ]] && ./batch/CREATE_DB_FILE.bat
+          # バッチファイル実行（失敗時はエラー終了）
+          ./batch/$test.bat
+        done
+      shell: bash
+    
+    # テスト結果の確認
+    - name: Verify results
+      run: ls -la *.db 2>/dev/null && echo "Success" || echo "No database files"
+      shell: bash

@@ -1,7 +1,6 @@
-/* �_���v�t�@�C���Ƃ��ďo�͂���B */
+/* ダンプファイルとして出力する。 */
 .output dump/dump.txt
 .dump
 
-
-/* �R�l�N�V������ؒf����B*/
+/* コネクションを切断する。*/
 .quit
