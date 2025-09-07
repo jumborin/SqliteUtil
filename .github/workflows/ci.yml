@@ -39,9 +39,9 @@ jobs:
           # 既存DBファイルを削除
           rm -f *.db
           # DUMP_DBテスト前にDBファイル作成
-          [[ "$test" == "DUMP_DB" ]] && ./CREATE_DB_FILE.bat
+          [[ "$test" == "DUMP_DB" ]] && ./batch/CREATE_DB_FILE.bat
           # バッチファイル実行（失敗時はエラー終了）
-          ./$test.bat
+          ./batch/$test.bat
         done
       shell: bash
     

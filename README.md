@@ -5,7 +5,7 @@ Sqliteを利用する際のユーティリティツール
 
 # 使い方
 
-下記ダウンロードサイトからcommand-line toolsをダウンロードし、sqlite3.exeを同じ階層に格納し、batファイルをダブルクリックする。
+下記ダウンロードサイトからcommand-line toolsをダウンロードし、sqlite3.exeをプロジェクトルートに格納し、batchフォルダ内のbatファイルをダブルクリックする。
 
 # sqlite3のダウンロードサイト
 
