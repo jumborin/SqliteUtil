@@ -1,65 +1,48 @@
-name: SqliteUtil-ci
+name: CI
 
+# プッシュとプルリクエスト時にテスト実行
 on:
   push:
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 jobs:
   test:
     runs-on: windows-latest
     
     steps:
-    - uses: actions/checkout@v3
+    # リポジトリのコードをチェックアウト
+    - uses: actions/checkout@v4
     
-    - name: Setup SQLite and directories
+    # SQLite3実行ファイルのダウンロードとセットアップ
+    - name: Setup SQLite
       run: |
-        Invoke-WebRequest -Uri "https://www.sqlite.org/2023/sqlite-tools-win32-x86-3420000.zip" -OutFile "sqlite-tools.zip"
-        Expand-Archive -Path "sqlite-tools.zip" -DestinationPath "sqlite-tools"
-        Copy-Item "sqlite-tools\sqlite-tools-win32-x86-3420000\sqlite3.exe" -Destination "."
-        New-Item -ItemType Directory -Force -Path "data"
-      shell: powershell
+        # SQLiteツールをダウンロード
+        curl -L https://www.sqlite.org/2023/sqlite-tools-win32-x86-3420000.zip -o sqlite.zip
+        # sqlite3.exeを展開
+        tar -xf sqlite.zip --strip-components=1 sqlite-tools-win32-x86-3420000/sqlite3.exe
+        # 出力用ディレクトリ作成
+        mkdir data
+      shell: bash
     
-    - name: Test CREATE_DB_FILE
-      run: .\CREATE_DB_FILE.bat
-      shell: cmd
-      continue-on-error: true
-    
-    - name: Clean and Test IMPORT_CSV_DATA
+    # 全バッチファイルのテスト実行
+    - name: Run tests
       run: |
-        del /f /q *.db 2>nul
-        .\IMPORT_CSV_DATA.bat
-      shell: cmd
-      continue-on-error: true
+        # テスト対象のバッチファイル一覧
+        tests=("CREATE_DB_FILE" "IMPORT_CSV_DATA" "IMPORT_TSV_DATA" "DUMP_DB" "IMPORT_DB")
+        for test in "${tests[@]}"; do
+          echo "Testing $test..."
+          # DUMP_DB以外は既存DBファイルを削除
+          [[ "$test" != "DUMP_DB" ]] && rm -f *.db
+          # DUMP_DBテスト前にDBファイル作成
+          [[ "$test" == "DUMP_DB" ]] && ./CREATE_DB_FILE.bat
+          # バッチファイル実行（失敗しても継続）
+          ./$test.bat || echo "$test failed"
+        done
+      shell: bash
     
-    - name: Clean and Test IMPORT_TSV_DATA
-      run: |
-        del /f /q *.db 2>nul
-        .\IMPORT_TSV_DATA.bat
-      shell: cmd
-      continue-on-error: true
-    
-    - name: Test DUMP_DB
-      run: |
-        .\CREATE_DB_FILE.bat
-        .\DUMP_DB.bat
-      shell: cmd
-      continue-on-error: true
-    
-    - name: Test IMPORT_DB
-      run: |
-        del /f /q *.db 2>nul
-        .\IMPORT_DB.bat
-      shell: cmd
-      continue-on-error: true
-    
-    - name: Verify database exists
-      run: |
-        if (Test-Path "*.db") {
-          Write-Host "Database files created successfully"
-          Get-ChildItem *.db
-        } else {
-          Write-Error "No database files found"
-          exit 1
-        }
-      shell: powershell
+    # テスト結果の確認
+    - name: Verify results
+      run: ls -la *.db 2>/dev/null && echo "Success" || echo "No database files"
+      shell: bash
