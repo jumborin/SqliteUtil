@@ -8,8 +8,7 @@ Sqliteを利用する際のユーティリティツール
 下記ダウンロードサイトからcommand-line toolsをダウンロードし、sqlite3.exeをプロジェクトルートに格納し、batchフォルダ内のbatファイルをダブルクリックする。
 
 # sqlite3のダウンロードサイト
-
 https://www.sqlite.org/download.html
 
 # サポートバージョン
-SQLite version 3.27.2
+SQLite version 3.42.0
